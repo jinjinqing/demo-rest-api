@@ -5,12 +5,7 @@ import demo.rest.Main.system
 import spray.routing._
 import spray.routing.directives.BasicDirectives
 
-trait Routes extends Directives with BasicDirectives {
-
-  import com.softwaremill.macwire.MacwireMacros._
-
-  lazy val healthcheckRoute: HealthCheckRoute = wire[HealthCheckRoute]
-  lazy val customerRoute: CustomerRoute = wire[CustomerRoute]
+trait Routes extends businessInitializer with Directives with BasicDirectives {
 
   lazy val swaggerRoutes = {
 

@@ -3,15 +3,25 @@ package demo.rest
 import java.util.UUID
 import javax.ws.rs.Path
 
+import customer.usecases.{UcListCustomer, UcGetCustomer}
+import demo.business.customer.boundary.{Customer, CustomerDetails, NewCustomer}
+import demo.business.customer.usecases.UcCreateCustomer
 import io.swagger.annotations._
-import spray.http.StatusCodes
+import spray.http._
+import spray.httpx.marshalling.ToResponseMarshaller
 import spray.routing._
+import spray.httpx.SprayJsonSupport.sprayJsonUnmarshaller
+import spray.json._
 
 import scala.annotation.meta.field
 
 @Path("/customer")
 @Api(value = "/customer")
-class CustomerRoute extends Directives {
+class CustomerRoute(
+    ucCreateCustomer: UcCreateCustomer,
+    ucGetCustomer: UcGetCustomer,
+    ucListCustomer: UcListCustomer
+) extends Directives with RestJsonFormatSupport {
 
   val customerPath = "customer"
 
@@ -27,11 +37,9 @@ class CustomerRoute extends Directives {
             }
           }
       } ~
-        put {
-          pathPrefix(JavaUUID) { guid =>
-            pathEnd {
-              createCustomer(guid)
-            }
+        post {
+          pathEnd {
+            createCustomer()
           }
         }
     }
@@ -39,19 +47,28 @@ class CustomerRoute extends Directives {
 
   @ApiOperation(httpMethod = "GET", value = "Returns a list of available Customers")
   def list = {
-    complete(StatusCodes.Created)
+    implicit val getCustomerMarshaller = ToResponseMarshaller.of[List[Customer]](
+      ContentTypes.`application/json`, ContentTypes.`text/plain(UTF-8)`, ContentTypes.`text/plain`
+    ) {
+      (result, contentType, context) =>
+        val ctx = context.withContentTypeOverriding(contentType)
+        ctx.marshalTo(HttpResponse(StatusCodes.OK, result.toJson.prettyPrint))
+    }
+    complete(ucListCustomer.list)
   }
 
-  @ApiOperation(value = "Creates a customer", httpMethod = "PUT", consumes = "application/json")
+  @ApiOperation(value = "Creates a customer", httpMethod = "POST", consumes = "application/json")
   @ApiImplicitParams(Array(
-    new ApiImplicitParam(name = "customerId", required = true, dataType = "string", paramType = "path",
-      value = "Id of the Customer that is going to be created"),
     new ApiImplicitParam(name = "body", value = "Customer object that needs to be created",
-      dataType = "com.demo.external.rest.NewCustomer", required = true, paramType = "body")
+      dataType = "demo.rest.NewCustomerSwagger", required = true, paramType = "body")
   ))
-  @Path("{customerId}")
-  def createCustomer(@ApiParam(hidden = true) guid: UUID) = {
-     complete(StatusCodes.Created)
+  def createCustomer() = {
+    entity(as[NewCustomer]) { customer =>
+      ucCreateCustomer.create(customer) match {
+        case Left(error) => complete(StatusCodes.InternalServerError)
+        case Right(id)   => complete(StatusCodes.Created)
+      }
+    }
   }
 
   @ApiOperation(httpMethod = "GET", value = "Returns detailed information about customer")
@@ -61,13 +78,23 @@ class CustomerRoute extends Directives {
   ))
   @Path("/{customerId}")
   def getCustomer(@ApiParam(hidden = true) guid: UUID): StandardRoute = {
-    complete(StatusCodes.Created)
-  }
 
+    implicit val getCustomerMarshaller = ToResponseMarshaller.of[CustomerDetails](
+      ContentTypes.`application/json`, ContentTypes.`text/plain(UTF-8)`, ContentTypes.`text/plain`
+    ) {
+      (result, contentType, context) =>
+        val ctx = context.withContentTypeOverriding(contentType)
+        ctx.marshalTo(HttpResponse(StatusCodes.OK, result.toJson.prettyPrint))
+    }
+
+    ucGetCustomer.get(guid) match {
+      case Left(error)   => complete(StatusCodes.NotFound)
+      case Right(detail) => complete(detail)
+    }
+  }
 }
 
-case class NewCustomer(
+case class NewCustomerSwagger(
   @(ApiModelProperty @field)(required = true) firstName: String,
   @(ApiModelProperty @field)(required = true) lastName: String
 )
-

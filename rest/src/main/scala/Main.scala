@@ -12,7 +12,7 @@ import spray.can._
 import spray.can.server.ServerSettings
 import scala.concurrent.duration._
 
-object Main extends App with Storage with StrictLogging with Routes {
+object Main extends App with StrictLogging with Routes {
 
   lazy implicit val restExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
   implicit val system = ActorSystem("demo-rest")
@@ -21,7 +21,7 @@ object Main extends App with Storage with StrictLogging with Routes {
   val interface = "0.0.0.0"
   lazy val config = ConfigFactory.load()
 
-  logger.info("DEMOREST")
+  logger.info("DEMO-REST")
 
   try {
     val settings = ServerSettings.fromSubConfig(config.getConfig("spray.can.server")).copy(serverHeader = "demorest/1.0.0")
@@ -42,7 +42,7 @@ object Main extends App with Storage with StrictLogging with Routes {
     }
   } catch {
     case t: Throwable =>
-      logger.error("DEMOREST startup failed: ", t)
+      logger.error("DEMO-REST startup failed: ", t)
       sys.exit(1)
   }
 
