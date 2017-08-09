@@ -10,7 +10,7 @@ import slick.jdbc.MySQLProfile.api._
 class Invoices(tag: Tag) extends Table[Invoice](tag, "INVOICES") {
   def id = column[UUID]("ID", O.PrimaryKey)
   def customerId = column[UUID]("CUSTOMER_ID")
-  def invoiceDate = column[LocalDate]("INOICE_DATE", O.SqlType("DATETIME"))
+  def invoiceDate = column[LocalDate]("INVOICE_DATE", O.SqlType("DATETIME"))
   def chargeName = column[String]("CHARGE_NAME")
   def toBePaid = column[String]("TO_BE_PAID")
 

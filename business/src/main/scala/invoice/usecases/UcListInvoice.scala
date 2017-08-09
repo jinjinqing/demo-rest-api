@@ -1,4 +1,4 @@
-package invoice.usecases
+package demo.business.invoice.usecases
 
 import demo.business.invoice.boundary.{Invoice, InvoiceFinder}
 
