@@ -25,9 +25,9 @@ trait Routes extends businessInitializer with Directives with BasicDirectives {
     pathPrefix("demo") {
       swaggerService.routes ~
         swaggerUI ~
-        healthcheckRoute.tree ~
         customerRoute.tree ~
-        invoiceRoute.tree
+        invoiceRoute.tree ~
+        paymentRoute.tree
     }
   }
 }

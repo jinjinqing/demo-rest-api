@@ -29,7 +29,8 @@ object SwaggerService {
   val apiTypes = Seq(
     ru.typeOf[HealthCheckRoute],
     ru.typeOf[CustomerRoute],
-    ru.typeOf[InvoiceRoute]
+    ru.typeOf[InvoiceRoute],
+    ru.typeOf[PaymentRoute]
   )
 
 }

@@ -5,6 +5,7 @@ import java.util.UUID
 
 import demo.business.customer.boundary.{Customer, CustomerDetails, NewCustomer}
 import demo.business.invoice.boundary.{InvoiceDetails, Invoice, NewInvoice}
+import demo.business.payment.boundary.{PaymentDetails, Payment, NewPayment}
 import spray.json._
 
 trait RestJsonFormatSupport extends DefaultJsonProtocol {
@@ -31,7 +32,9 @@ trait RestJsonFormatSupport extends DefaultJsonProtocol {
   implicit val newInvoiceFormat = jsonFormat4(NewInvoice)
   implicit val invoiceFormat = jsonFormat5(Invoice)
   implicit val invoiceDetailsFormat = jsonFormat6(InvoiceDetails)
-
+  implicit val newPaymentFormat = jsonFormat2(NewPayment)
+  implicit val paymentFormat = jsonFormat3(Payment)
+  implicit val paymentDetailsFormat = jsonFormat3(PaymentDetails)
 }
 
 object RestJsonFormatSupport extends RestJsonFormatSupport {}

@@ -12,9 +12,9 @@ import scala.util.Try
 import scalaz.{-\/, \/, \/-}
 
 class PaymentsStorage
-  extends TableQuery(new Payments(_))
-  with PaymentFinder
-  with PaymentCreator {
+    extends TableQuery(new Payments(_))
+    with PaymentFinder
+    with PaymentCreator {
 
   override def findAll: List[Payment] = {
     futureToResult(db.run(this.result)).toList

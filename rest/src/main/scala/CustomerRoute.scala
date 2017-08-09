@@ -7,6 +7,7 @@ import customer.usecases.{UcListCustomer, UcGetCustomer}
 import demo.business.customer.boundary.{Customer, CustomerDetails, NewCustomer}
 import demo.business.customer.usecases.UcCreateCustomer
 import io.swagger.annotations._
+import spray.http.MediaTypes._
 import spray.http._
 import spray.httpx.marshalling.ToResponseMarshaller
 import spray.routing._
@@ -77,7 +78,7 @@ class CustomerRoute(
       value = "ID of the Customer that needs to be fetched")
   ))
   @Path("/{customerId}")
-  def getCustomer(@ApiParam(hidden = true) guid: UUID): StandardRoute = {
+  def getCustomer(@ApiParam(hidden = true) guid: UUID) = {
 
     implicit val getCustomerMarshaller = ToResponseMarshaller.of[CustomerDetails](
       ContentTypes.`application/json`, ContentTypes.`text/plain(UTF-8)`, ContentTypes.`text/plain`
