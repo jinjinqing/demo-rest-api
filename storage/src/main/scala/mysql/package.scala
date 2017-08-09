@@ -1,6 +1,6 @@
 package demo.storage
 
-import mysql.customerStorage
+import demo.storage.mysql.{invoiceStorage, customerStorage}
 
 import slick.jdbc.MySQLProfile.api._
 
@@ -12,6 +12,7 @@ package object mysql {
   val db = Database.forConfig("demo.storage.mysql")
 
   object customerStorage extends CustomersStorage
+  object invoiceStorage extends InvoicesStorage
 
   implicit def futureToResult[T](future: Future[T]) = {
     Await.result(future, 60 minutes)
@@ -19,7 +20,7 @@ package object mysql {
 }
 
 object DemoDatabase {
-  lazy val schemas = customerStorage.schema
+  lazy val schemas = customerStorage.schema ++ invoiceStorage.schema
 
   def init = {
     val db = Database.forConfig("demo.storage.mysql")

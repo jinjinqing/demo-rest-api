@@ -10,7 +10,7 @@ class UcGetCustomer(finder: CustomerFinder) {
     finder.exists(guid) match {
       case true =>
         val result = finder.findById(guid).get
-        Right(CustomerDetails(result.Id, result.firstName, result.lastName))
+        Right(CustomerDetails(result.id, result.firstName, result.lastName))
       case false => Left("Customer doesn't exist")
     }
   }

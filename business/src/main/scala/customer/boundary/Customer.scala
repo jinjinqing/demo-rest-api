@@ -3,7 +3,7 @@ package demo.business.customer.boundary
 import java.util.UUID
 
 case class Customer(
-  Id: UUID,
+  id: UUID,
   firstName: String,
   lastName: String
 ) extends Serializable
