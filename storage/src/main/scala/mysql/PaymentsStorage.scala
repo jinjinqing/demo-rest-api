@@ -28,6 +28,10 @@ class PaymentsStorage
     futureToResult(db.run(this.findBy(_.id).applied(id).map(_.id).exists.result))
   }
 
+  def findByInvoiceId(id: UUID): List[Payment] = {
+    futureToResult(db.run(this.findBy(_.invoiceId).applied(id).result)).toList
+  }
+
   private def creationSeq(guid: UUID, newPayment: NewPayment): DBIOAction[Unit, NoStream, Write] = {
     DBIO.seq(
       sqlu"LOCK TABLES PAYMENTS WRITE",

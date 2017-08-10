@@ -28,6 +28,10 @@ class InvoicesStorage
     futureToResult(db.run(this.findBy(_.id).applied(id).map(_.id).exists.result))
   }
 
+  def findByCustomerId(id: UUID): List[Invoice] = {
+    futureToResult(db.run(this.findBy(_.customerId).applied(id).result)).toList
+  }
+
   private def creationSeq(guid: UUID, newInvoice: NewInvoice): DBIOAction[Unit, NoStream, Write] = {
     DBIO.seq(
       sqlu"LOCK TABLES INVOICES WRITE",

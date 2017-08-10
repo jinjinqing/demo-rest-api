@@ -28,12 +28,12 @@ trait businessInitializer extends Storage with StorageInitializer {
 
   lazy val customerRoute: CustomerRoute = new CustomerRoute(ucCreateCustomer, ucGetCustomer, ucListCustomer)
   lazy val ucCreateCustomer: UcCreateCustomer = new UcCreateCustomer(customerCreator)
-  lazy val ucGetCustomer: UcGetCustomer = new UcGetCustomer(customerFinder)
+  lazy val ucGetCustomer: UcGetCustomer = new UcGetCustomer(customerFinder, invoiceFinder, paymentFinder)
   lazy val ucListCustomer: UcListCustomer = new UcListCustomer(customerFinder)
 
   lazy val invoiceRoute: InvoiceRoute = new InvoiceRoute(ucCreateInvoice, ucGetInvoice, ucListInvoice)
   lazy val ucCreateInvoice: UcCreateInvoice = new UcCreateInvoice(invoiceCreator, customerFinder)
-  lazy val ucGetInvoice: UcGetInvoice = new UcGetInvoice(invoiceFinder)
+  lazy val ucGetInvoice: UcGetInvoice = new UcGetInvoice(invoiceFinder, paymentFinder)
   lazy val ucListInvoice: UcListInvoice = new UcListInvoice(invoiceFinder)
 
   lazy val paymentRoute: PaymentRoute = new PaymentRoute(ucCreatePayment, ucGetPayment, ucListPayment)

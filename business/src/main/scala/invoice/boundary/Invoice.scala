@@ -3,6 +3,8 @@ package demo.business.invoice.boundary
 import java.time.LocalDate
 import java.util.UUID
 
+import demo.business.payment.boundary.Payment
+
 case class Invoice(
   id: UUID,
   customerId: UUID,
@@ -24,5 +26,6 @@ case class InvoiceDetails(
   invoiceDate: LocalDate,
   chargeName: String,
   toBePaid: String,
-  payments: List[String]
+  alreadyPaid: String,
+  payments: List[Payment]
 )

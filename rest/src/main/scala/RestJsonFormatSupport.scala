@@ -26,15 +26,15 @@ trait RestJsonFormatSupport extends DefaultJsonProtocol {
     }
   }
 
-  implicit val newCustomerFormat = jsonFormat2(NewCustomer)
-  implicit val customerFormat = jsonFormat3(Customer)
-  implicit val customerDetailsFormat = jsonFormat3(CustomerDetails)
-  implicit val newInvoiceFormat = jsonFormat4(NewInvoice)
-  implicit val invoiceFormat = jsonFormat5(Invoice)
-  implicit val invoiceDetailsFormat = jsonFormat6(InvoiceDetails)
   implicit val newPaymentFormat = jsonFormat2(NewPayment)
   implicit val paymentFormat = jsonFormat3(Payment)
   implicit val paymentDetailsFormat = jsonFormat3(PaymentDetails)
+  implicit val newInvoiceFormat = jsonFormat4(NewInvoice)
+  implicit val invoiceFormat = jsonFormat5(Invoice)
+  implicit val invoiceDetailsFormat = jsonFormat7(InvoiceDetails)
+  implicit val newCustomerFormat = jsonFormat2(NewCustomer)
+  implicit val customerFormat = jsonFormat3(Customer)
+  implicit val customerDetailsFormat = jsonFormat4(CustomerDetails)
 }
 
 object RestJsonFormatSupport extends RestJsonFormatSupport {}
