@@ -1,8 +1,6 @@
-package demo.business.payment.usecases
+package payment
 
 import java.util.UUID
-
-import demo.business.payment.boundary.{PaymentDetails, PaymentFinder}
 
 class UcGetPayment(finder: PaymentFinder) {
 

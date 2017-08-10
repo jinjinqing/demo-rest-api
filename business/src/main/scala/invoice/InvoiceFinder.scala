@@ -1,4 +1,4 @@
-package demo.business.invoice.boundary
+package invoice
 
 import java.util.UUID
 

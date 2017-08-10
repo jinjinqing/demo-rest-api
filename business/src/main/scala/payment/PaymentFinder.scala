@@ -1,6 +1,7 @@
-package demo.business.payment.boundary
+package payment
 
 import java.util.UUID
+
 import demo.business.common.Finder
 
 trait PaymentFinder extends Finder[UUID, Payment] {

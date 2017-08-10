@@ -1,9 +1,8 @@
-package demo.business.invoice.usecases
+package invoice
 
 import java.util.UUID
 
-import demo.business.invoice.boundary.{InvoiceDetails, InvoiceFinder}
-import demo.business.payment.boundary.PaymentFinder
+import payment.PaymentFinder
 
 class UcGetInvoice(finder: InvoiceFinder, paymentFinder: PaymentFinder) {
 

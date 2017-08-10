@@ -1,9 +1,9 @@
-package demo.business.invoice.boundary
+package invoice
 
 import java.time.LocalDate
 import java.util.UUID
 
-import demo.business.payment.boundary.Payment
+import payment.Payment
 
 case class Invoice(
   id: UUID,

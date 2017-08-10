@@ -1,10 +1,9 @@
-package customer.usecases
+package customer
 
 import java.util.UUID
 
-import demo.business.customer.boundary.{CustomerDetails, CustomerFinder}
-import demo.business.invoice.boundary.{InvoiceDetails, InvoiceFinder}
-import demo.business.payment.boundary.PaymentFinder
+import invoice.{InvoiceFinder, InvoiceDetails}
+import payment.PaymentFinder
 
 class UcGetCustomer(customerFinder: CustomerFinder, invoiceFinder: InvoiceFinder, paymentFinder: PaymentFinder) {
 

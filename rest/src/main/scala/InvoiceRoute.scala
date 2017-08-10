@@ -3,8 +3,7 @@ package demo.rest
 import java.util.UUID
 import javax.ws.rs.Path
 
-import demo.business.invoice.boundary.{Invoice, InvoiceDetails, NewInvoice}
-import demo.business.invoice.usecases.{UcListInvoice, UcGetInvoice, UcCreateInvoice}
+import invoice._
 import io.swagger.annotations._
 import spray.http._
 import spray.httpx.marshalling.ToResponseMarshaller

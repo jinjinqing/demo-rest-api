@@ -1,6 +1,4 @@
-package demo.business.payment.usecases
-
-import demo.business.payment.boundary.{Payment, PaymentFinder}
+package payment
 
 class UcListPayment(finder: PaymentFinder) {
 

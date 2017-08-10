@@ -2,9 +2,8 @@ package demo.storage.mysql.tables
 
 import java.time.LocalDate
 import java.util.UUID
-
-import demo.business.invoice.boundary.Invoice
 import demo.storage.mysql.customerStorage
+import invoice.Invoice
 import slick.jdbc.MySQLProfile.api._
 
 class Invoices(tag: Tag) extends Table[Invoice](tag, "INVOICES") {

@@ -3,9 +3,8 @@ package demo.rest
 import java.util.UUID
 import javax.ws.rs.Path
 
-import demo.business.payment.boundary.{Payment, PaymentDetails, NewPayment}
-import demo.business.payment.usecases.{UcListPayment, UcGetPayment, UcCreatePayment}
 import io.swagger.annotations._
+import payment._
 import spray.http._
 import spray.httpx.marshalling.ToResponseMarshaller
 import spray.routing._

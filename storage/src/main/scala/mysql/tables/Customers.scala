@@ -1,8 +1,7 @@
 package demo.storage.mysql.tables
 
 import java.util.UUID
-
-import demo.business.customer.boundary.Customer
+import customer.Customer
 import slick.jdbc.MySQLProfile.api._
 
 class Customers(tag: Tag) extends Table[Customer](tag, "CUSTOMERS") {

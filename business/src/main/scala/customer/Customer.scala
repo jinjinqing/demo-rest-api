@@ -1,8 +1,8 @@
-package demo.business.customer.boundary
+package customer
 
 import java.util.UUID
 
-import demo.business.invoice.boundary.InvoiceDetails
+import invoice.InvoiceDetails
 
 case class Customer(
   id: UUID,

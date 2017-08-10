@@ -1,6 +1,4 @@
-package customer.usecases
-
-import demo.business.customer.boundary.{Customer, CustomerFinder}
+package customer
 
 class UcListCustomer(finder: CustomerFinder) {
 

@@ -1,9 +1,8 @@
 package demo.storage.mysql.tables
 
 import java.util.UUID
-
-import demo.business.payment.boundary.Payment
 import demo.storage.mysql.invoiceStorage
+import payment.Payment
 import slick.jdbc.MySQLProfile.api._
 
 class Payments(tag: Tag) extends Table[Payment](tag, "PAYMENTS") {

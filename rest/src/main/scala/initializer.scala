@@ -1,14 +1,10 @@
 package demo.rest
 
-import customer.usecases.{UcListCustomer, UcGetCustomer}
-import demo.business.customer.boundary.{CustomerCreator, CustomerFinder}
-import demo.business.customer.usecases.UcCreateCustomer
-import demo.business.invoice.boundary.{InvoiceFinder, InvoiceCreator}
-import demo.business.invoice.usecases.{UcListInvoice, UcGetInvoice, UcCreateInvoice}
-import demo.business.payment.boundary.{PaymentCreator, PaymentFinder}
-import demo.business.payment.usecases.{UcCreatePayment, UcGetPayment, UcListPayment}
+import customer._
 import demo.storage.DemoDatabase
 import demo.storage.mysql.{paymentStorage, invoiceStorage, customerStorage}
+import invoice._
+import payment._
 
 trait Storage {
   def customerFinder: CustomerFinder = customerStorage

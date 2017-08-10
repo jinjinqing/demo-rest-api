@@ -1,4 +1,4 @@
-package demo.business.payment.boundary
+package payment
 
 import java.util.UUID
 

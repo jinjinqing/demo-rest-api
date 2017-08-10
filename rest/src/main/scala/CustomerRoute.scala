@@ -3,11 +3,8 @@ package demo.rest
 import java.util.UUID
 import javax.ws.rs.Path
 
-import customer.usecases.{UcListCustomer, UcGetCustomer}
-import demo.business.customer.boundary.{Customer, CustomerDetails, NewCustomer}
-import demo.business.customer.usecases.UcCreateCustomer
+import customer._
 import io.swagger.annotations._
-import spray.http.MediaTypes._
 import spray.http._
 import spray.httpx.marshalling.ToResponseMarshaller
 import spray.routing._

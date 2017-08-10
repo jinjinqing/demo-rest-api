@@ -2,7 +2,7 @@ package demo.storage.mysql
 
 import java.util.UUID
 
-import demo.business.customer.boundary.{NewCustomer, Customer, CustomerCreator, CustomerFinder}
+import customer.{CustomerFinder, CustomerCreator, NewCustomer, Customer}
 import demo.storage.mysql.tables.Customers
 import slick.lifted.TableQuery
 import slick.jdbc.MySQLProfile.api._
@@ -36,14 +36,14 @@ class CustomersStorage
     )
   }
 
-  override def create(newCustomer: NewCustomer): \/[Throwable, UUID] = {
+  override def create(newCustomer: NewCustomer): Either[Throwable, UUID] = {
     Try {
       val guid = java.util.UUID.randomUUID
       futureToResult(db.run(creationSeq(guid, newCustomer)))
       guid
     } match {
-      case scala.util.Success(id) => \/-(id)
-      case scala.util.Failure(f)  => -\/(new Exception(f))
+      case scala.util.Success(id) => Right(id)
+      case scala.util.Failure(f)  => Left(new Exception(f))
     }
   }
 

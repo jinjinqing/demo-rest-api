@@ -3,9 +3,9 @@ package demo.rest
 import java.time.LocalDate
 import java.util.UUID
 
-import demo.business.customer.boundary.{Customer, CustomerDetails, NewCustomer}
-import demo.business.invoice.boundary.{InvoiceDetails, Invoice, NewInvoice}
-import demo.business.payment.boundary.{PaymentDetails, Payment, NewPayment}
+import customer.{NewCustomer, CustomerDetails, Customer}
+import invoice.{InvoiceDetails, NewInvoice, Invoice}
+import payment.{PaymentDetails, NewPayment, Payment}
 import spray.json._
 
 trait RestJsonFormatSupport extends DefaultJsonProtocol {
@@ -37,4 +37,4 @@ trait RestJsonFormatSupport extends DefaultJsonProtocol {
   implicit val customerDetailsFormat = jsonFormat4(CustomerDetails)
 }
 
-object RestJsonFormatSupport extends RestJsonFormatSupport {}
+object RestJsonFormatSupport extends RestJsonFormatSupport

@@ -3,7 +3,7 @@ package demo.storage.mysql
 import java.util.UUID
 
 import demo.storage.mysql.tables.Payments
-import demo.business.payment.boundary.{NewPayment, Payment, PaymentCreator, PaymentFinder}
+import payment.{PaymentFinder, PaymentCreator, NewPayment, Payment}
 import slick.lifted.TableQuery
 import slick.jdbc.MySQLProfile.api._
 import slick.dbio.Effect.Write
@@ -40,14 +40,14 @@ class PaymentsStorage
     )
   }
 
-  override def create(newPayment: NewPayment): \/[Throwable, UUID] = {
+  override def create(newPayment: NewPayment): Either[Throwable, UUID] = {
     Try {
       val guid = java.util.UUID.randomUUID
       futureToResult(db.run(creationSeq(guid, newPayment)))
       guid
     } match {
-      case scala.util.Success(id) => \/-(id)
-      case scala.util.Failure(f)  => -\/(new Exception(f))
+      case scala.util.Success(id) => Right(id)
+      case scala.util.Failure(f)  => Left(new Exception(f))
     }
   }
 }
