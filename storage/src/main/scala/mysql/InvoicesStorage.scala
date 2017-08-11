@@ -9,7 +9,6 @@ import slick.jdbc.MySQLProfile.api._
 import slick.dbio.Effect.Write
 
 import scala.util.Try
-import scalaz.{-\/, \/, \/-}
 
 class InvoicesStorage
     extends TableQuery(new Invoices(_))

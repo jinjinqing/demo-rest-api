@@ -5,6 +5,7 @@ object Version {
   val scalaBinary = scala.substring(0,4)
 
   val scalaTest        = "2.2.6"
+  val scalaMock        = "3.2.2"
   val scalaz           = "7.1.8"
   val akka             = "2.3.14"
   val spray            = "1.3.3"
@@ -34,6 +35,7 @@ object Library {
   val macwireRuntime = "com.softwaremill.macwire"   %% "runtime"             % Version.macwire
   val typesafeConfig = "com.typesafe"               %  "config"              % Version.typesafeConfig
   val scalaTest      = "org.scalatest"              %% "scalatest"           % Version.scalaTest
+  val scalaMOck      = "org.scalamock"              %% "scalamock-scalatest-support" % Version.scalaMock
   val scalaLogging   = "com.typesafe.scala-logging" %% "scala-logging"       % Version.scalaLogging
   val sprayCan       = "io.spray"                   %% "spray-can"           % Version.spray
   val sprayRouting   = "io.spray"                   %% "spray-routing-shapeless2" % Version.spray
@@ -57,7 +59,7 @@ object Dependencies {
   val logging = Seq(scalaLogging)
 
   val business = Seq(
-    scalazCore, scalazEffect, scalazTypelevel
+    scalazCore, scalazEffect, scalazTypelevel, scalaMOck, scalaTest
   )
 
   val rest = Seq(
