@@ -1,27 +1,59 @@
-import Common.taskProject
+name := "demo-rest-api"
 
-scalacOptions ++= Seq("-encoding", "UTF-8")
+organization := "demo"
 
-lazy val core = taskProject(id = "business", base = file("business"))
-  .settings(buildInfoPackage := "demo.business")
-  .settings(
-    libraryDependencies ++= Dependencies.business
-  )
+scalaVersion := "2.11.8"
 
-lazy val mysql = taskProject(id = "storage", base = file("storage"))
-  .settings(buildInfoPackage := "demo.storage.mysql")
-  .settings(libraryDependencies ++= Dependencies.mysql)
-  .dependsOn(core)
+scalacOptions ++= Seq(
+  "-encoding", "UTF-8",
+  "-deprecation",
+  "-feature",
+  "-unchecked"
+)
 
-lazy val rest = taskProject(id = "rest", base = file("rest"))
-  .settings(Revolver.settings: _*)
-  .settings(buildInfoPackage := "demo.rest")
-  .settings(
-    libraryDependencies ++= Dependencies.rest,
-    Revolver.reStart <<= Revolver.reStart,
-    scalacOptions += "-Xmacro-settings:conf.output.dir=" + baseDirectory.value / "src/main/resources/",
-    scalacOptions += "-language:reflectiveCalls"
-  ).dependsOn(core, mysql)
+val scala            = "2.11.8"
+val scalaTest        = "2.2.6"
+val scalaMock        = "3.2.2"
+val akka             = "2.3.14"
+val spray            = "1.3.3"
+val sprayJson        = "1.3.2"
+val swaggerSpray     = "0.7.2"
+val typesafeConfig   = "1.3.0"
+val slick            = "3.2.0"
+val scalaLogging     = "3.1.0"
+val mysqlConnector   = "5.1.42"
+val sprayJsonLenses  = "0.6.1"
+val phantom          = "1.28.16"
+val json4sJackson    = "3.2.10"
+val logback          = "1.1.3"
 
+libraryDependencies ++= Seq(
+  "com.typesafe.akka"          %% "akka-slf4j"          % akka,
+  "com.typesafe.akka"          %% "akka-testkit"        % akka,
+  "com.typesafe.akka"          %% "akka-cluster"        % akka,
+  "com.github.swagger-spray"   %% "swagger-spray"       % swaggerSpray,
+  "com.typesafe"               %  "config"              % typesafeConfig,
+  "org.scalatest"              %% "scalatest"           % scalaTest,
+  "org.scalamock"              %% "scalamock-scalatest-support" % scalaMock,
+  "com.typesafe.scala-logging" %% "scala-logging"       % scalaLogging,
+  "io.spray"                   %% "spray-can"           % spray,
+  "io.spray"                   %% "spray-routing-shapeless23" % spray,
+  "io.spray"                   %% "spray-client"        % spray,
+  "io.spray"                   %% "spray-testkit"       % spray,
+  "io.spray"                   %% "spray-json"          % sprayJson,
+  "com.typesafe.slick"         %% "slick"               % slick,
+  "com.typesafe.slick"         %% "slick-hikaricp"      % slick,
+  "mysql"                      % "mysql-connector-java" % mysqlConnector,
+  //"org.scala-lang"             %% "scala-reflect"       % scala,
+  "com.websudos"               %% "phantom-dsl"         % phantom,
+  "org.json4s"                 %% "json4s-jackson"      % json4sJackson,
+  "ch.qos.logback"             % "logback-classic"      % logback
+)
 
+resolvers += "websudos" at "http://dl.bintray.com/websudos/oss-releases"
+resolvers += Classpaths.typesafeReleases
+resolvers += Classpaths.sbtPluginReleases
+resolvers += Resolver.sonatypeRepo("releases")
+resolvers += Resolver.sonatypeRepo("snapshots")
 
+Seq(Revolver.settings: _*)
