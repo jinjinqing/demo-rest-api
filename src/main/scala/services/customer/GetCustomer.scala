@@ -4,7 +4,7 @@ import java.util.UUID
 import services.invoice.{ InvoiceDetails, InvoiceFinder }
 import services.payment.PaymentFinder
 
-class UcGetCustomer(customerFinder: CustomerFinder, invoiceFinder: InvoiceFinder, paymentFinder: PaymentFinder) {
+class GetCustomer(customerFinder: CustomerFinder, invoiceFinder: InvoiceFinder, paymentFinder: PaymentFinder) {
 
   def get(guid: UUID): Either[String, CustomerDetails] = {
     customerFinder.exists(guid) match {

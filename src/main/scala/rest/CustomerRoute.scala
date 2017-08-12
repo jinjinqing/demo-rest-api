@@ -13,15 +13,15 @@ import spray.json._
 
 import scala.annotation.meta.field
 
-@Path("/customer")
-@Api(value = "/customer")
+@Path("/customers")
+@Api(value = "/customers")
 class CustomerRoute(
-    ucCreateCustomer: UcCreateCustomer,
-    ucGetCustomer: UcGetCustomer,
-    ucListCustomer: UcListCustomer
+    ucCreateCustomer: CreateCustomer,
+    ucGetCustomer: GetCustomer,
+    ucListCustomer: ListCustomer
 ) extends Directives with RestJsonFormatSupport {
 
-  val customerPath = "customer"
+  val customerPath = "customers"
 
   def tree: Route = {
     pathPrefix(customerPath) {

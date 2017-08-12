@@ -4,7 +4,7 @@ import java.util.UUID
 
 import services.customer.CustomerFinder
 
-class UcCreateInvoice(creator: InvoiceCreator, customerFinder: CustomerFinder) {
+class CreateInvoice(creator: InvoiceCreator, customerFinder: CustomerFinder) {
 
   def create(newInvoice: NewInvoice): Either[String, UUID] = {
     customerFinder.exists(newInvoice.customerId) match {

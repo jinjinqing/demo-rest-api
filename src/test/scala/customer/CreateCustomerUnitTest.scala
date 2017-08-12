@@ -5,7 +5,7 @@ import java.util.UUID
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.{Matchers, FunSuite}
 
-class UcCreateCustomerUnitTest extends FunSuite with MockFactory with Matchers {
+class CreateCustomerUnitTest extends FunSuite with MockFactory with Matchers {
 
   trait mocks {
     val creator = mock[CustomerCreator]

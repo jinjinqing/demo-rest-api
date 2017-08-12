@@ -2,7 +2,7 @@ package services.payment
 
 import java.util.UUID
 
-class UcGetPayment(finder: PaymentFinder) {
+class GetPayment(finder: PaymentFinder) {
 
   def get(guid: UUID): Either[String, PaymentDetails] = {
     finder.exists(guid) match {

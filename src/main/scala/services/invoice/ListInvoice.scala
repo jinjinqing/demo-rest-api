@@ -1,6 +1,6 @@
 package services.invoice
 
-class UcListInvoice(finder: InvoiceFinder) {
+class ListInvoice(finder: InvoiceFinder) {
 
   def list(): List[Invoice] = {
     finder.findAll

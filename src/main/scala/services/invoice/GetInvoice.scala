@@ -4,7 +4,7 @@ import java.util.UUID
 
 import services.payment.PaymentFinder
 
-class UcGetInvoice(finder: InvoiceFinder, paymentFinder: PaymentFinder) {
+class GetInvoice(finder: InvoiceFinder, paymentFinder: PaymentFinder) {
 
   def get(guid: UUID): Either[String, InvoiceDetails] = {
     finder.exists(guid) match {

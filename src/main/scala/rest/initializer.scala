@@ -17,18 +17,18 @@ trait ServicesInitializer {
   def paymentFinder: PaymentFinder = paymentStorage
   def paymentCreator: PaymentCreator = paymentStorage
 
-  lazy val customerRoute: CustomerRoute = new CustomerRoute(ucCreateCustomer, ucGetCustomer, ucListCustomer)
-  lazy val ucCreateCustomer: UcCreateCustomer = new UcCreateCustomer(customerCreator)
-  lazy val ucGetCustomer: UcGetCustomer = new UcGetCustomer(customerFinder, invoiceFinder, paymentFinder)
-  lazy val ucListCustomer: UcListCustomer = new UcListCustomer(customerFinder)
+  lazy val customerRoute: CustomerRoute = new CustomerRoute(createCustomer, getCustomer, listCustomer)
+  lazy val createCustomer: CreateCustomer = new CreateCustomer(customerCreator)
+  lazy val getCustomer: GetCustomer = new GetCustomer(customerFinder, invoiceFinder, paymentFinder)
+  lazy val listCustomer: ListCustomer = new ListCustomer(customerFinder)
 
-  lazy val invoiceRoute: InvoiceRoute = new InvoiceRoute(ucCreateInvoice, ucGetInvoice, ucListInvoice)
-  lazy val ucCreateInvoice: UcCreateInvoice = new UcCreateInvoice(invoiceCreator, customerFinder)
-  lazy val ucGetInvoice: UcGetInvoice = new UcGetInvoice(invoiceFinder, paymentFinder)
-  lazy val ucListInvoice: UcListInvoice = new UcListInvoice(invoiceFinder)
+  lazy val invoiceRoute: InvoiceRoute = new InvoiceRoute(createInvoice, getInvoice, listInvoice)
+  lazy val createInvoice: CreateInvoice = new CreateInvoice(invoiceCreator, customerFinder)
+  lazy val getInvoice: GetInvoice = new GetInvoice(invoiceFinder, paymentFinder)
+  lazy val listInvoice: ListInvoice = new ListInvoice(invoiceFinder)
 
-  lazy val paymentRoute: PaymentRoute = new PaymentRoute(ucCreatePayment, ucGetPayment, ucListPayment)
-  lazy val ucCreatePayment: UcCreatePayment = new UcCreatePayment(paymentCreator, invoiceFinder)
-  lazy val ucGetPayment: UcGetPayment = new UcGetPayment(paymentFinder)
-  lazy val ucListPayment: UcListPayment = new UcListPayment(paymentFinder)
+  lazy val paymentRoute: PaymentRoute = new PaymentRoute(createPayment, getPayment, listPayment)
+  lazy val createPayment: CreatePayment = new CreatePayment(paymentCreator, invoiceFinder)
+  lazy val getPayment: GetPayment = new GetPayment(paymentFinder)
+  lazy val listPayment: ListPayment = new ListPayment(paymentFinder)
 }

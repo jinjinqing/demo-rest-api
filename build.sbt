@@ -44,13 +44,9 @@ libraryDependencies ++= Seq(
   "com.typesafe.slick"         %% "slick"               % slick,
   "com.typesafe.slick"         %% "slick-hikaricp"      % slick,
   "mysql"                      % "mysql-connector-java" % mysqlConnector,
-//  "com.websudos"               %% "phantom-dsl"         % phantom,
   "org.json4s"                 %% "json4s-jackson"      % json4sJackson,
   "ch.qos.logback"             % "logback-classic"      % logback
 )
-
-//resolvers += "websudos" at "http://dl.bintray.com/websudos/oss-releases"
-//resolvers += "OSS Sonatype" at "https://repo1.maven.org/maven2/"
 
 Seq(Revolver.settings: _*)
 

@@ -2,7 +2,7 @@ package services.customer
 
 import java.util.UUID
 
-class UcCreateCustomer(creator: CustomerCreator) {
+class CreateCustomer(creator: CustomerCreator) {
 
   def create(newCustomer: NewCustomer): Either[String, UUID] = {
     creator.create(newCustomer) match {

@@ -13,15 +13,15 @@ import spray.json._
 
 import scala.annotation.meta.field
 
-@Path("/payment")
-@Api(value = "/payment")
+@Path("/payments")
+@Api(value = "/payments")
 class PaymentRoute(
-    ucCreatePayment: UcCreatePayment,
-    ucGetPayment: UcGetPayment,
-    ucListPayment: UcListPayment
+    ucCreatePayment: CreatePayment,
+    ucGetPayment: GetPayment,
+    ucListPayment: ListPayment
 ) extends Directives with RestJsonFormatSupport {
 
-  val paymentPath = "payment"
+  val paymentPath = "payments"
 
   def tree: Route = {
     pathPrefix(paymentPath) {

@@ -4,7 +4,6 @@ import akka.actor._
 import akka.io.IO
 import akka.io.Tcp.{ Bound, CommandFailed }
 import akka.pattern._
-import akka.routing._
 import akka.util.Timeout
 import com.typesafe.config.ConfigFactory
 import com.typesafe.scalalogging.StrictLogging
@@ -26,12 +25,7 @@ object Main extends App with DataBaseInitializer with StrictLogging {
   try {
     val settings = ServerSettings.fromSubConfig(config.getConfig("spray.can.server")).copy(serverHeader = "demorest/1.0.0")
 
-    val props = Props {
-      //new RouterActor(swaggerRoutes)
-      new ServiceActor
-    } //.withRouter(RoundRobinPool(Runtime.getRuntime().availableProcessors() * 4))
-
-    val routerActorRef: ActorRef = system.actorOf(props)
+    val routerActorRef: ActorRef = system.actorOf(Props(ServiceActor))
     implicit val timeout: Timeout = 5.minutes
     val bindFuture = IO(Http) ? Http.Bind(routerActorRef, interface, port, settings = Some(settings))
     bindFuture.onSuccess {

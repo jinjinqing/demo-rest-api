@@ -4,7 +4,7 @@ import java.util.UUID
 
 import services.invoice.InvoiceFinder
 
-class UcCreatePayment(creator: PaymentCreator, invoiceFinder: InvoiceFinder) {
+class CreatePayment(creator: PaymentCreator, invoiceFinder: InvoiceFinder) {
 
   def create(newPayment: NewPayment): Either[String, UUID] = {
     invoiceFinder.exists(newPayment.invoiceId) match {
