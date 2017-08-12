@@ -37,23 +37,21 @@ libraryDependencies ++= Seq(
   "org.scalamock"              %% "scalamock-scalatest-support" % scalaMock,
   "com.typesafe.scala-logging" %% "scala-logging"       % scalaLogging,
   "io.spray"                   %% "spray-can"           % spray,
-  "io.spray"                   %% "spray-routing-shapeless23" % spray,
+  "io.spray"                   %% "spray-routing-shapeless2" % spray,
   "io.spray"                   %% "spray-client"        % spray,
   "io.spray"                   %% "spray-testkit"       % spray,
   "io.spray"                   %% "spray-json"          % sprayJson,
   "com.typesafe.slick"         %% "slick"               % slick,
   "com.typesafe.slick"         %% "slick-hikaricp"      % slick,
   "mysql"                      % "mysql-connector-java" % mysqlConnector,
-  //"org.scala-lang"             %% "scala-reflect"       % scala,
-  "com.websudos"               %% "phantom-dsl"         % phantom,
+//  "com.websudos"               %% "phantom-dsl"         % phantom,
   "org.json4s"                 %% "json4s-jackson"      % json4sJackson,
   "ch.qos.logback"             % "logback-classic"      % logback
 )
 
-resolvers += "websudos" at "http://dl.bintray.com/websudos/oss-releases"
-resolvers += Classpaths.typesafeReleases
-resolvers += Classpaths.sbtPluginReleases
-resolvers += Resolver.sonatypeRepo("releases")
-resolvers += Resolver.sonatypeRepo("snapshots")
+//resolvers += "websudos" at "http://dl.bintray.com/websudos/oss-releases"
+//resolvers += "OSS Sonatype" at "https://repo1.maven.org/maven2/"
 
 Seq(Revolver.settings: _*)
+
+net.virtualvoid.sbt.graph.Plugin.graphSettings

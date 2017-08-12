@@ -3,9 +3,8 @@ package rest
 import akka.actor.ActorRefFactory
 import rest.Main.system
 import spray.routing._
-import spray.routing.directives.BasicDirectives
 
-trait Routes extends ServicesInitializer with Directives with BasicDirectives {
+trait Routes extends ServicesInitializer with Directives {
 
   lazy val swaggerRoutes = {
 

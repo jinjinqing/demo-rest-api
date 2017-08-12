@@ -28,7 +28,7 @@ object Main extends App with DataBaseInitializer with StrictLogging {
 
     val props = Props {
       //new RouterActor(swaggerRoutes)
-      ServiceActor
+      new ServiceActor
     } //.withRouter(RoundRobinPool(Runtime.getRuntime().availableProcessors() * 4))
 
     val routerActorRef: ActorRef = system.actorOf(props)
@@ -46,5 +46,4 @@ object Main extends App with DataBaseInitializer with StrictLogging {
       logger.error("DEMO-REST startup failed: ", t)
       sys.exit(1)
   }
-
 }
