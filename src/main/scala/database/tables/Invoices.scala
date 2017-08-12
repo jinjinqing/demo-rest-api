@@ -11,7 +11,7 @@ class Invoices(tag: Tag) extends Table[Invoice](tag, "INVOICES") {
   def customerId = column[UUID]("CUSTOMER_ID")
   def invoiceDate = column[LocalDate]("INVOICE_DATE", O.SqlType("DATETIME"))
   def chargeName = column[String]("CHARGE_NAME")
-  def toBePaid = column[String]("TO_BE_PAID")
+  def toBePaid = column[BigDecimal]("TO_BE_PAID", O.SqlType("decimal(10, 2)"))
 
   def customer = foreignKey(
     "INVOICES_CUSTOMER_ID_FK",

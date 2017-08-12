@@ -7,7 +7,7 @@ import services.common.Finder
 case class Payment(
   id: UUID,
   invoiceId: UUID,
-  value: String
+  value: BigDecimal
 )
 
 case class NewPayment(

@@ -35,7 +35,7 @@ class InvoicesStorage
   private def creationSeq(guid: UUID, newInvoice: NewInvoice): DBIOAction[Unit, NoStream, Write] = {
     DBIO.seq(
       sqlu"LOCK TABLES INVOICES WRITE",
-      this += Invoice(guid, newInvoice.customerId, newInvoice.invoiceDate, newInvoice.chargeName, newInvoice.toBePaid),
+      this += Invoice(guid, newInvoice.customerId, newInvoice.invoiceDate, newInvoice.chargeName, BigDecimal(newInvoice.toBePaid)),
       sqlu"UNLOCK TABLES"
     )
   }

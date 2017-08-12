@@ -11,8 +11,8 @@ class GetInvoice(finder: InvoiceFinder, paymentFinder: PaymentFinder) {
       case true =>
         val result = finder.findById(guid).get
         val payments = paymentFinder.findByInvoiceId(guid)
-        val alreadyPaid = payments.map(p => BigDecimal(p.value)).sum.toString
-        Right(InvoiceDetails(result.id, result.customerId, result.invoiceDate, result.chargeName, result.toBePaid, alreadyPaid, payments))
+        val alreadyPaid = payments.map(_.value).sum.toString
+        Right(InvoiceDetails(result.id, result.customerId, result.invoiceDate, result.chargeName, result.toBePaid.toString, alreadyPaid, payments))
       case false => Left("Invoice doesn't exist")
     }
   }

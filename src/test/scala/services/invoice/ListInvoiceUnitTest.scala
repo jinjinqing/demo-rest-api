@@ -20,7 +20,7 @@ class ListInvoiceUnitTest extends FunSuite with MockFactory with Matchers {
       val customerId = UUID.randomUUID()
       val date = LocalDate.parse("2005-11-12")
 
-      (finder.findAll _).expects().returning(List(Invoice(id1, customerId, date, "tv", "20"), Invoice(id2, customerId, date, "internet", "40")))
+      (finder.findAll _).expects().returning(List(Invoice(id1, customerId, date, "tv", BigDecimal("20")), Invoice(id2, customerId, date, "internet", BigDecimal("40"))))
 
       val result = service.list()
 

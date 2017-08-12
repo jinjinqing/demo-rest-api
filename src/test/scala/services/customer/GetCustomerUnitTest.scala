@@ -24,8 +24,8 @@ class GetCustomerUnitTest extends FunSuite with MockFactory with Matchers {
       val paymentId = UUID.randomUUID()
       val date = LocalDate.parse("2005-11-12")
 
-      (paymentFinder.findByInvoiceId _).expects(invoiceId).returning(List(Payment(paymentId, invoiceId, "30.00")))
-      (invoiceFinder.findByCustomerId _).expects(customerId).returning(List(Invoice(invoiceId, customerId, date, "Mobile", "40.00")))
+      (paymentFinder.findByInvoiceId _).expects(invoiceId).returning(List(Payment(paymentId, invoiceId, BigDecimal("30.00"))))
+      (invoiceFinder.findByCustomerId _).expects(customerId).returning(List(Invoice(invoiceId, customerId, date, "Mobile", BigDecimal("40.00"))))
       (customerFinder.findById _).expects(customerId).returning(Some(Customer(customerId, "aa", "bb")))
       (customerFinder.exists _).expects(customerId).returning(true)
 

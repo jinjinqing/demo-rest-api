@@ -11,7 +11,7 @@ case class Invoice(
   customerId: UUID,
   invoiceDate: LocalDate,
   chargeName: String,
-  toBePaid: String
+  toBePaid: BigDecimal
 )
 
 case class NewInvoice(

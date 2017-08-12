@@ -8,7 +8,7 @@ class GetPayment(finder: PaymentFinder) {
     finder.exists(guid) match {
       case true =>
         val result = finder.findById(guid).get
-        Right(PaymentDetails(result.id, result.invoiceId, result.value))
+        Right(PaymentDetails(result.id, result.invoiceId, result.value.toString))
       case false => Left("Payment doesn't exist")
     }
   }

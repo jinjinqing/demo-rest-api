@@ -23,8 +23,8 @@ class GetInvoiceUnitTest extends FunSuite with MockFactory with Matchers {
       val date = LocalDate.parse("2005-11-12")
 
       (invoiceFinder.exists _).expects(invoiceId).returning(true)
-      (paymentFinder.findByInvoiceId _).expects(invoiceId).returning(List(Payment(paymentId, invoiceId, "30.00")))
-      (invoiceFinder.findById _).expects(invoiceId).returning(Some(Invoice(invoiceId, customerId, date, "Mobile", "40.00")))
+      (paymentFinder.findByInvoiceId _).expects(invoiceId).returning(List(Payment(paymentId, invoiceId, 30.00)))
+      (invoiceFinder.findById _).expects(invoiceId).returning(Some(Invoice(invoiceId, customerId, date, "Mobile", 40.00)))
 
       val results = service.get(invoiceId)
 

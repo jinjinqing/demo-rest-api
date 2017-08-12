@@ -8,7 +8,7 @@ import slick.jdbc.MySQLProfile.api._
 class Payments(tag: Tag) extends Table[Payment](tag, "PAYMENTS") {
   def id = column[UUID]("ID", O.PrimaryKey)
   def invoiceId = column[UUID]("INVOICE_ID")
-  def value = column[String]("VALUE")
+  def value = column[BigDecimal]("VALUE", O.SqlType("decimal(10, 2)"))
 
   def invoice = foreignKey(
     "PAYMENTS_INVOICE_ID_FK",
