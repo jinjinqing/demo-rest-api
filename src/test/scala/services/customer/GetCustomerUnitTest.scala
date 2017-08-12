@@ -16,7 +16,7 @@ class GetCustomerUnitTest extends FunSuite with MockFactory with Matchers {
     val paymentFinder = mock[PaymentFinder]
   }
 
-  test("get details of a customer successfully") {
+  test("Get details of a customer successfully") {
     new mocks {
       val service = new GetCustomer(customerFinder, invoiceFinder, paymentFinder)
       val customerId = UUID.randomUUID()
