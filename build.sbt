@@ -14,8 +14,8 @@ scalacOptions ++= Seq(
 val scala            = "2.11.8"
 val scalaTest        = "2.2.6"
 val scalaMock        = "3.2.2"
-val akka             = "2.3.14"
-val spray            = "1.3.3"
+val akka             = "2.3.6"
+val spray            = "1.3.2"
 val sprayJson        = "1.3.2"
 val swaggerSpray     = "0.7.2"
 val typesafeConfig   = "1.3.0"
@@ -37,7 +37,7 @@ libraryDependencies ++= Seq(
   "org.scalamock"              %% "scalamock-scalatest-support" % scalaMock,
   "com.typesafe.scala-logging" %% "scala-logging"       % scalaLogging,
   "io.spray"                   %% "spray-can"           % spray,
-  "io.spray"                   %% "spray-routing-shapeless2" % spray,
+  "io.spray"                   %% "spray-routing"       % spray,
   "io.spray"                   %% "spray-client"        % spray,
   "io.spray"                   %% "spray-testkit"       % spray,
   "io.spray"                   %% "spray-json"          % sprayJson,
