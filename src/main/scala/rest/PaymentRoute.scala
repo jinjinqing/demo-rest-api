@@ -58,7 +58,7 @@ class PaymentRoute(
   @ApiOperation(value = "Creates a payment", httpMethod = "POST", consumes = "application/json")
   @ApiImplicitParams(Array(
     new ApiImplicitParam(name = "body", value = "Payment object that needs to be created",
-      dataType = "demo.rest.NewPaymentSwagger", required = true, paramType = "body")
+      dataType = "rest.NewPaymentSwagger", required = true, paramType = "body")
   ))
   def createPayment() = {
     entity(as[NewPayment]) { payment =>

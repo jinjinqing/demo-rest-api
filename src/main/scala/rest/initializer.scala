@@ -10,8 +10,6 @@ trait DataBaseInitializer {
 }
 
 trait ServicesInitializer {
-  lazy val healthcheckRoute: HealthCheckRoute = new HealthCheckRoute
-
   def customerFinder: CustomerFinder = customerStorage
   def customerCreator: CustomerCreator = customerStorage
   def invoiceFinder: InvoiceFinder = invoiceStorage

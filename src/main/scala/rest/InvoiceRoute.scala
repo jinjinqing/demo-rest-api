@@ -58,7 +58,7 @@ class InvoiceRoute(
   @ApiOperation(value = "Creates a invoice", httpMethod = "POST", consumes = "application/json")
   @ApiImplicitParams(Array(
     new ApiImplicitParam(name = "body", value = "Invoice object that needs to be created",
-      dataType = "demo.rest.NewInvoiceSwagger", required = true, paramType = "body")
+      dataType = "rest.NewInvoiceSwagger", required = true, paramType = "body")
   ))
   def createInvoice() = {
     entity(as[NewInvoice]) { invoice =>
@@ -73,10 +73,6 @@ class InvoiceRoute(
   @ApiImplicitParams(Array(
     new ApiImplicitParam(name = "invoiceId", required = true, dataType = "string", paramType = "path",
       value = "ID of the Invoice that needs to be fetched")
-  ))
-  @ApiResponses(Array(
-    new ApiResponse(code = 404, message = "Invoice not found"),
-    new ApiResponse(code = 400, message = "Invalid ID supplied")
   ))
   @Path("/{invoiceId}")
   def getInvoice(@ApiParam(hidden = true) guid: UUID): StandardRoute = {

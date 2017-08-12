@@ -58,7 +58,7 @@ class CustomerRoute(
   @ApiOperation(value = "Creates a customer", httpMethod = "POST", consumes = "application/json")
   @ApiImplicitParams(Array(
     new ApiImplicitParam(name = "body", value = "Customer object that needs to be created",
-      dataType = "demo.rest.NewCustomerSwagger", required = true, paramType = "body")
+      dataType = "rest.NewCustomerSwagger", required = true, paramType = "body")
   ))
   def createCustomer() = {
     entity(as[NewCustomer]) { customer =>

@@ -27,7 +27,6 @@ object SwaggerService {
   import scala.reflect.runtime.{ universe => ru }
 
   val apiTypes = Seq(
-    ru.typeOf[HealthCheckRoute],
     ru.typeOf[CustomerRoute],
     ru.typeOf[InvoiceRoute],
     ru.typeOf[PaymentRoute]
